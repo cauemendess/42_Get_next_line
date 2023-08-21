@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 10:27:46 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/08/18 19:07:08 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/08/21 15:39:18 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,43 +55,33 @@ char	*ft_strjoin(char *s1, char *s2)
 	int		dest_i;
 	int		i;
 
-	if (s1 == NULL)
-		dest = ft_calloc(1, 1);
-	dest = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	dest_i = 0;
 	i = 0;
-	while (s1[i])
-	{
-		dest[dest_i] = s1[i];
-		i++;
-		dest_i++;
-	}
+	if (!s1)
+		dest = ft_calloc(1, 1);
+	dest = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!dest)
+		return (NULL);
+	while (s1 && s1[i])
+		dest[dest_i++] = s1[i++];
 	i = 0;
 	while (s2[i])
-	{
-		dest[dest_i] = s2[i];
-		i++;
-		dest_i++;
-	}
+		dest[dest_i++] = s2[i++];
 	dest[dest_i] = '\0';
-	free(s1);
+	if (s1)
+		free(s1);
 	return (dest);
 }
 
 char	*ft_strchr(const char *s, int c)
 {
-	int	i;
+	char *str;
 
-	i = 0;
-	if (!s)
-		return (0);
-	if (c == '\0')
-		return ((char *)&s[ft_strlen(s)]);
-	while (s[i] != '\0')
+	str = (char *)s;
+	while (*str != (unsigned char)c && *str != '\0')
 	{
-		if (s[i] == (char)c)
-			return ((char *)&s[i]);
-		i++;
+		str++;
 	}
-	return (0);
+
+	return (str);
 }
