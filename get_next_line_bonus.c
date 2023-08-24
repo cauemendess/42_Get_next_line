@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/16 10:47:55 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/08/24 15:12:39 by csilva-m         ###   ########.fr       */
+/*   Created: 2023/08/24 15:19:46 by csilva-m          #+#    #+#             */
+/*   Updated: 2023/08/24 15:52:45 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_read(int fd, char *buffer)
 {
@@ -37,7 +37,6 @@ char	*ft_read(int fd, char *buffer)
 	return (buffer);
 }
 
-// take a line for return
 char	*ft_line(char *buffer)
 {
 	size_t	i;
@@ -94,14 +93,14 @@ char	*ft_rest(char *buffer)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*buffer;
+	static char	*buffer[2048];
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = ft_read(fd, buffer);
-	if (!buffer)
+	buffer[fd] = ft_read(fd, buffer[fd]);
+	if (!buffer[fd])
 		return (NULL);
-	line = ft_line(buffer);
-	buffer = ft_rest(buffer);
+	line = ft_line(buffer[fd]);
+	buffer[fd] = ft_rest(buffer[fd]);
 	return (line);
 }
