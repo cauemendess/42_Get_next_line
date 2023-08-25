@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:19:46 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/08/24 15:52:45 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/08/25 16:02:07 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,27 +65,15 @@ char	*ft_line(char *buffer)
 	return (str);
 }
 
-// delete line find
 char	*ft_rest(char *buffer)
 {
-	int		i;
-	int		j;
 	char	*str;
+	char	*nl_pos;
 
-	i = 0;
-	while (buffer[i] && buffer[i] != '\n')
-		i++;
-	if (!buffer[i])
-	{
-		free(buffer);
-		return (NULL);
-	}
-	str = malloc((ft_strlen(buffer) - i + 1) * sizeof(char));
-	i++;
-	j = 0;
-	while (buffer[i])
-		str[j++] = buffer[i++];
-	str[j] = '\0';
+	str = NULL;
+	nl_pos = ft_strchr(buffer, '\n');
+	if (nl_pos != NULL)
+		str = ft_strdup(nl_pos + 1);
 	free(buffer);
 	return (str);
 }
