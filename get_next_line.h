@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 10:58:02 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/08/24 15:12:46 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/08/25 15:47:58 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ char	*ft_read(int fd, char *buffer);
 char	*ft_line(char *buffer);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strchr(const char *s, int c);
+char	*ft_strdup(char *s);
 
 #endif

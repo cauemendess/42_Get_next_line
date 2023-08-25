@@ -6,7 +6,7 @@
 /*   By: csilva-m <csilva-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 10:27:46 by csilva-m          #+#    #+#             */
-/*   Updated: 2023/08/24 15:28:53 by csilva-m         ###   ########.fr       */
+/*   Updated: 2023/08/25 15:47:13 by csilva-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,8 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	dest_i = 0;
 	i = 0;
-	if (!s1)
-	{
-		s1 = malloc(1 * sizeof(char));
-		s1[0] = '\0';
-	}
+	if (s1 == NULL)
+		s1 = ft_strdup("");
 	dest = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!dest)
 		return (NULL);
@@ -74,4 +71,22 @@ char	*ft_strchr(const char *s, int c)
 		chr = (char *)&s[i];
 	}
 	return (chr);
+}
+
+char	*ft_strdup(char *s)
+{
+	size_t	index;
+	char	*new_string;
+
+	new_string = malloc(ft_strlen(s) + 1);
+	index = 0;
+	if (new_string == NULL)
+		return (NULL);
+	while (s[index])
+	{
+		new_string[index] = s[index];
+		index++;
+	}
+	new_string[index] = '\0';
+	return (new_string);
 }
