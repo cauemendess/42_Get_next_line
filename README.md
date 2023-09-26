@@ -1,5 +1,7 @@
 # 42_Get_next_line
-This project implements a function called `get_next_line()`, which returns a line from a file, followed by a newline character. The `get_next_line()` function should work with any buffer size.
+
+## About
+> _This project implements a function called `get_next_line()`, which returns a line from a file, followed by a newline character. The `get_next_line()` function should work with any buffer size._
 
 ## How to use
 
